@@ -1,15 +1,35 @@
+from . import log
+
+import pathlib
 import tarfile
 
 
-def compress_directory(dst_file, src_directory):
+def compress_path_to_tar_gz(
+    output_path: str | pathlib.Path,
+    source_path: str | pathlib.Path,
+) -> None:
     '''
-    Comprime un directorio en un archivo .tar.gz.
+    Compress a file or directory into a .tar.gz archive.
 
-    :param src_directory: Ruta del directorio que se desea comprimir.
-    :param dst_file: Nombre del archivo .tar.gz que se generará.
+    Args:
+        output_path: Path to the output .tar.gz file.
+        source_path: File or directory to compress.
+
+    Raises:
+        FileExistsError: If the output file already exists.
+        FileNotFoundError: If the source path does not exist.
     '''
 
-    with tarfile.open(dst_file, 'w:gz') as file_tar:
-        file_tar.add(src_directory, arcname=os.path.basename(src_directory))
+    output_path = pathlib.Path(output_path)
+    source_path = pathlib.Path(source_path)
 
-    print(f'Directorio "{src_directory}" comprimido en "{dst_file}".')
+    if output_path.exists():
+        raise FileExistsError(f'Output file already exists: "{output_path}"')
+
+    if not source_path.exists():
+        raise FileNotFoundError(f'Source path does not exist: "{source_path}"')
+
+    with tarfile.open(output_path, mode="w:gz") as tar:
+        tar.add(source_path, arcname=source_path.name)
+
+    log.info(f'"{source_path}" compressed into "{output_path}".')
