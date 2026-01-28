@@ -1,0 +1,10 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "praxis"
+version = "0.1.0"
+description = "Utilidades personales en Python"
+authors = [{name = "Sigifredo Escobar Gómez", email = "sigifredo89@gmail.com"}]
+dependencies = [tarfile]
