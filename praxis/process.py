@@ -45,8 +45,8 @@ def run_shell_command(
         error_msg = (
             f'Command failed: {command_str}\n'
             f'Exit Code: {result.returncode}\n'
-            f'Stderr: {stderr[:1000]}\n'  # Limitamos a 1000 caracteres por seguridad
-            f'Stdout: {stdout[:1000]}'
+            f'Stderr: {stderr}\n'  # Limitamos a 1000 caracteres por seguridad
+            f'Stdout: {stdout}'
         )
 
     except FileNotFoundError:
