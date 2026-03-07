@@ -28,7 +28,7 @@ If a function does not satisfy these conditions, it does not belong here.
 ### From GitHub
 
 ```bash
-pip install "git+https://github.com/sigifredo/praxis-py.git"
+pip install --upgrade "git+https://github.com/sigifredo/praxis-py.git"
 ```
 
 ## What This Library Is Not
