@@ -52,8 +52,8 @@ def convert_to_wav_pydub(input_path: pathlib.Path, output_path: pathlib.Path | N
 
 
 def needs_wav_conversion(
-    info: typing.Optional[typing.Tuple[int, int, int]],
     path: pathlib.Path,
+    info: typing.Optional[typing.Tuple[int, int, int]] | None = None,
 ) -> bool:
     '''
     Determina si un archivo de audio requiere conversión a WAV PCM s16le
@@ -67,15 +67,17 @@ def needs_wav_conversion(
     - La extensión del archivo no es ".wav".
 
     Args:
+        path (pathlib.Path): Ruta al archivo de audio original.
         info (Optional[Tuple[int, int, int]]): Tupla con
             (sample_rate, channels, sample_width en bytes), o None si no se
             pudo leer la metadata.
-        path (pathlib.Path): Ruta al archivo de audio original.
 
     Returns:
         bool: True si el archivo debe convertirse; False si ya cumple con
         las especificaciones requeridas.
     '''
+
+    info = info if info else probe_audio(path)
 
     if info is None:
         return True
@@ -84,6 +86,7 @@ def needs_wav_conversion(
     is_wav_ext = path.suffix.lower() == '.wav'
 
     return not (sr == TARGET_SR and ch == TARGET_CH and sw == TARGET_SAMPLE_WIDTH and is_wav_ext)
+
 
 def probe_audio(path: pathlib.Path) -> typing.Optional[typing.Tuple[int, int, int]]:
     '''
