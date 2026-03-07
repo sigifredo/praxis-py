@@ -1,6 +1,5 @@
+from . import log
 
-
-import log
 import pathlib
 import pydub
 import tempfile
