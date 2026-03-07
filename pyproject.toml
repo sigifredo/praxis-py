@@ -7,4 +7,4 @@ name = "praxis"
 version = "0.1.1"
 description = "Utilidades personales en Python"
 authors = [{name = "Sigifredo Escobar Gómez", email = "sigifredo89@gmail.com"}]
-dependencies = [pydub]
+dependencies = ["pydub"]
