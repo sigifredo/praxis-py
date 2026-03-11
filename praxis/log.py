@@ -32,7 +32,7 @@ def _log(
 
 
 def debug(s: str, emit=True) -> None:
-    return _log('DEBUG', None, s, emit)
+    return _log('DEBUG', '34', s, emit)
 
 
 def info(s: str, emit=True) -> None:
