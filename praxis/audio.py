@@ -1,10 +1,13 @@
 from . import log
 
 import pathlib
-import pydub
 import tempfile
 import typing
 
+try:
+    import pydub
+except Exception:
+    pass
 
 TARGET_SR = 16000
 TARGET_CH = 1
