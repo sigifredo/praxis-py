@@ -9,7 +9,7 @@ def _log(
     color: str | None,
     s: str,
     emit=True,
-    file: typing.TextIO = sys.stderr,
+    file: typing.TextIO = sys.stdout,
 ) -> None | str:
     '''
     Construye y opcionalmente emite un mensaje de log con prefijo y color ANSI.
@@ -21,7 +21,7 @@ def _log(
         s (str): Contenido del mensaje.
         emit (bool): Si True, imprime el mensaje. Si False, lo retorna.
         file (TextIO): Objeto con método .write() donde se emite el mensaje.
-            Por defecto sys.stderr.
+            Por defecto sys.stdout.
 
     Returns:
         None | str: None si emit es True; el mensaje formateado si emit es False.
@@ -37,11 +37,11 @@ def _log(
     return msg
 
 
-def debug(s: str, emit=True, file: typing.TextIO = sys.stderr) -> None | str:
+def debug(s: str, emit=True, file: typing.TextIO = sys.stdout) -> None | str:
     return _log('DEBUG', '34', s, emit, file)
 
 
-def info(s: str, emit=True, file: typing.TextIO = sys.stderr) -> None | str:
+def info(s: str, emit=True, file: typing.TextIO = sys.stdout) -> None | str:
     return _log('INFO', '32', s, emit, file)
 
 
