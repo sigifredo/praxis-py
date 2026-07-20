@@ -10,6 +10,7 @@ def _log(
     s: str,
     emit=True,
     file: typing.TextIO = sys.stdout,
+    end: str = '\n',
 ) -> None | str:
     '''
     Construye y opcionalmente emite un mensaje de log con prefijo y color ANSI.
@@ -22,6 +23,8 @@ def _log(
         emit (bool): Si True, imprime el mensaje. Si False, lo retorna.
         file (TextIO): Objeto con método .write() donde se emite el mensaje.
             Por defecto sys.stdout.
+        end (str): Carácter de terminación pasado a print. Solo aplica
+            cuando emit es True. Por defecto '\\n'.
 
     Returns:
         None | str: None si emit es True; el mensaje formateado si emit es False.
@@ -31,23 +34,23 @@ def _log(
     msg = f'\033[{color}m{padded}\033[0m {s}' if color else f'{padded} {s}'
 
     if emit:
-        print(msg, file=file)
+        print(msg, file=file, end=end)
         return None
 
     return msg
 
 
-def debug(s: str, emit=True, file: typing.TextIO = sys.stdout) -> None | str:
-    return _log('DEBUG', '34', s, emit, file)
+def debug(s: str, emit=True, file: typing.TextIO = sys.stdout, end: str = '\n') -> None | str:
+    return _log('DEBUG', '34', s, emit, file, end)
 
 
-def info(s: str, emit=True, file: typing.TextIO = sys.stdout) -> None | str:
-    return _log('INFO', '32', s, emit, file)
+def info(s: str, emit=True, file: typing.TextIO = sys.stdout, end: str = '\n') -> None | str:
+    return _log('INFO', '32', s, emit, file, end)
 
 
-def warning(s: str, emit=True, file: typing.TextIO = sys.stderr) -> None | str:
-    return _log('WARNING', '33', s, emit, file)
+def warning(s: str, emit=True, file: typing.TextIO = sys.stderr, end: str = '\n') -> None | str:
+    return _log('WARNING', '33', s, emit, file, end)
 
 
-def error(s: str, emit=True, file: typing.TextIO = sys.stderr) -> None | str:
-    return _log('ERROR', '31', s, emit, file)
+def error(s: str, emit=True, file: typing.TextIO = sys.stderr, end: str = '\n') -> None | str:
+    return _log('ERROR', '31', s, emit, file, end)
