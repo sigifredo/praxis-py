@@ -1,6 +1,7 @@
 __version__ = '0.1.2'
 
 from . import log
+from . import time
 
 from .audio import convert_to_wav_pydub, needs_wav_conversion, probe_audio
 from .environment import load_environment_variables
