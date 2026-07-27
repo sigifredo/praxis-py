@@ -2,9 +2,7 @@ def hms_to_seconds(ts: str) -> float:
     '''Convierte una marca de tiempo a segundos.
 
     Args:
-        ts: Cadena en formato HH:MM:SS(.ms), MM:SS(.ms), SS(.ms), o el
-            sentinel '-1' (solo válido como marca de fin, indica
-            'hasta el final').
+        ts: Cadena en formato HH:MM:SS(.ms), MM:SS(.ms), SS(.ms), o el sentinel '-1' (solo válido como marca de fin, indica 'hasta el final').
 
     Returns:
         Duración en segundos como float, o -1.0 si ts es el sentinel.
@@ -36,8 +34,7 @@ def seconds_to_hms(seconds: float) -> str:
     '''Convierte segundos a formato HH:MM:SS.
 
     Args:
-        seconds: Duración en segundos. Puede tener decimales, que se
-            redondean al segundo entero más cercano.
+        seconds: Duración en segundos. Puede tener decimales, que se redondean al segundo entero más cercano.
 
     Returns:
         Cadena con la duración en formato HH:MM:SS.
